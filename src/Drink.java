@@ -1,3 +1,4 @@
+import org.powerbot.script.Condition;
 import org.powerbot.script.rt6.ClientContext;
 import org.powerbot.script.rt6.Item;
 
@@ -16,19 +17,16 @@ public class Drink extends Task<ClientContext> {
 
 	@Override
 	public void execute() {
-		for(int i=0;i<28;i++)
-		{ 
-			ctx.backpack.id(jugofwineid).poll().click(); 
-			Item wine = ctx.backpack.select().id(jugofwineid).poll();
-			if(wine.interact("Drink"))
+			
+			for(Item item : ctx.backpack.select().id(jugofwineid)) 
 			{
-				try {
-					Thread.sleep(3000);
-				} catch (InterruptedException e) {
-				}
+				ctx.backpack.id(jugofwineid).poll().click(); 
+			    if(item.interact("Drink")) 
+			    {
+			        Condition.sleep(2500);
+			    }
 			}
 			}
       
 	}
 
-}
