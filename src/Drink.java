@@ -1,4 +1,5 @@
 import org.powerbot.script.rt6.ClientContext;
+import org.powerbot.script.rt6.Item;
 
 
 
@@ -18,6 +19,14 @@ public class Drink extends Task<ClientContext> {
 		for(int i=0;i<28;i++)
 		{ 
 			ctx.backpack.id(jugofwineid).poll().click(); 
+			Item wine = ctx.backpack.select().id(jugofwineid).poll();
+			if(wine.interact("Drink"))
+			{
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+				}
+			}
 			}
       
 	}
