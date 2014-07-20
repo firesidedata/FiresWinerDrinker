@@ -20,7 +20,6 @@ public class Drink extends Task<ClientContext> {
 			
 			for(Item item : ctx.backpack.select().id(jugofwineid)) 
 			{
-				ctx.backpack.id(jugofwineid).poll().click(); 
 			    if(item.interact("Drink")) 
 			    {
 			        Condition.sleep(2500);
