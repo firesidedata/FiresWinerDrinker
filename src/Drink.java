@@ -1,5 +1,5 @@
 import org.powerbot.script.rt6.ClientContext;
-import org.powerbot.script.rt6.Item;
+
 
 
 public class Drink extends Task<ClientContext> {
@@ -15,6 +15,10 @@ public class Drink extends Task<ClientContext> {
 
 	@Override
 	public void execute() {
+		for(int i=0;i<28;i++)
+		{ 
+			ctx.backpack.id(jugofwineid).poll().click(); 
+			}
       
 	}
 
