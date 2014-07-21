@@ -33,7 +33,8 @@ public class WineDrinker extends PollingScript<ClientContext> implements PaintLi
         }
     }
     }
-    private final Color color1 = new Color(255, 255, 255);
+    private final Color color1 = new Color(204, 0, 0);
+
     private final Color color2 = new Color(0, 0, 0);
 
     private final BasicStroke stroke1 = new BasicStroke(1);
@@ -43,19 +44,27 @@ public class WineDrinker extends PollingScript<ClientContext> implements PaintLi
 		
         Graphics2D g = (Graphics2D)g1;
         g.setColor(color1);
-        g.fillRect(5, 4, 229, 110);
+        g.fillRect(5, 4, 229, 130);
         g.setColor(color2);
         g.setStroke(stroke1);
-        g.drawRect(5, 4, 229, 110);
+        g.drawRect(5, 4, 229, 130);
         g.setFont(font1);
+        g.drawString("Fires Winer Drinker ", 13, 26);
         g.drawString("Jugs Drank "+jugsdrunk, 13, 46);
         g.drawString("Profit "+profit, 13, 66);
         g.drawString("Jugs/h "+getPerHour(jugsdrunk), 13, 86);
         g.drawString("Profit/h "+getPerHour(profit), 13, 106);
+        g.drawString("time: "+format(getRuntime()), 13, 126);
 	}
 	private String getPerHour(long arg)
 	{
 		return NumberFormat.getIntegerInstance().format(arg * 3600000D / (getRuntime()));
 	}
+	String format(long time) 
+	{
+		final int sec = (int) (time / 1000), h = sec / 3600, m = sec / 60 % 60, s = sec % 60;
+		return (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m) + ":"
+				+ (s < 10 ? "0" + s : s);
 	}
+}
 
