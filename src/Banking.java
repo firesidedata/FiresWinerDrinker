@@ -1,3 +1,4 @@
+import org.powerbot.script.Condition;
 import org.powerbot.script.Locatable;
 import org.powerbot.script.rt6.ClientContext;
 
@@ -11,7 +12,7 @@ public class Banking extends Task<ClientContext> {
 
 	@Override
 	public boolean activate() {
-		return true;
+		return ctx.backpack.select().id(jugofwineid).count()==0;
 	}
 
 	@Override
@@ -26,8 +27,11 @@ public class Banking extends Task<ClientContext> {
       }
       else
       {
+          while(!ctx.bank.inViewport())
+          {
     	  ctx.movement.step(closebank);
-    	  ctx.camera.turnTo(closebank);
+    	  Condition.sleep(5000);
+    	  }
       }
       }
 }

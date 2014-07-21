@@ -22,7 +22,9 @@ public class Drink extends Task<ClientContext> {
 			{
 			    if(item.interact("Drink")) 
 			    {
-			        Condition.sleep(2500);
+			    	WineDrinker.jugsdrunk++;
+			    	WineDrinker.profit+=251;
+			        Condition.sleep(1500);
 			    }
 			}
 			}
